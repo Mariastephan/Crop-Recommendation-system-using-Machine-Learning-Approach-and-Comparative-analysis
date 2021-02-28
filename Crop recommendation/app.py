@@ -15,15 +15,18 @@ with open('crop.pkl','rb') as f:
 def main():
         #Fuel_Type_Diesel=0
         if request.method == 'POST':
-                nitrogen=request.form.get('nitrogen')
-                phosphorus=request.form.get('phosphorus')
-                potassium=request.form.get('potassium')
-                temperature=request.form.get('temperature')
-                humidity=request.form.get('humidity')
-                ph=request.form.get('ph')
-                rainfall=request.form.get('rainfall')
-                crop=['rice', 'maize', 'kidney beans', 'black gram', 'pomegranate','banana','mango', 'grapes', 'apple', 'orange', 'papaya','coconut', 'cotton', 'jute', 'coffee']
-                prediction=model.predict([[nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall]])
+                nitrogen=request.form.get("a")
+                phosphorus=request.form.get("b")
+                potassium=request.form.get("c")
+                temperature=request.form.get("d")
+                humidity=request.form.get("e")
+                ph=request.form.get("f")
+                rainfall=request.form.get("g")
+                #crop=['rice', 'maize', 'kidney beans', 'black gram', 'pomegranate','banana','mango', 'grapes', 'apple', 'orange', 'papaya','coconut', 'cotton', 'jute', 'coffee']
+                a=np.array([[nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall]])
+                x=a.astype(np.float)
+                prediction=model.predict(x)
+                ##prediction=model.predict([[nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall]]))
                 #print(prediction)
                 # output=round(prediction[0],2)
                 # rec_crop=crop[prediction]
